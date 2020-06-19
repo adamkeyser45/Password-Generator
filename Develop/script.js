@@ -76,7 +76,14 @@ function writePassword() {
         window.alert("You need to choose at least one type of character for the password! Try again!");
         return generatePassword();
       } else {
-        window.alert("Good Job!")
+        var choiceConfirm = window.confirm("Would you like to proceed with your choices or start over?");
+          if (choiceConfirm) {
+            window.alert("Hooray!");
+          } else {
+            return generatePassword();
+          }
+          
+
       }
 
   }
