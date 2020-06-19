@@ -29,31 +29,55 @@ function writePassword() {
       }
  
     // Ask for lowercase letters
-    var lowerCase = window.confirm("Would you like to use lowercase letters? OK for yes and CANCEL for no.")
+    var lowerCase = window.confirm("Would you like to use lowercase letters? OK for yes and CANCEL for no.");
 
       if (lowerCase) {
-        localStorage.setItem("lowCase", true);
+        localStorage.setItem("lowCase", "yes");
       } else {
-        localStorage.setItem("lowCase", false);
+        localStorage.setItem("lowCase", "no");
       }
 
     // Ask for uppercase letters
-    var upperCase = window.confirm("Would you like to use uppercase letters? OK for yes and CANCEL for no.")
+    var upperCase = window.confirm("Would you like to use uppercase letters? OK for yes and CANCEL for no.");
 
       if (upperCase) {
-        localStorage.setItem("upCase", true);
+        localStorage.setItem("upCase", "yes");
       } else {
-        localStorage.setItem("upCase", false);
+        localStorage.setItem("upCase", "no");
       }
 
     // Ask for numbers
-    var numConfirm = window.confirm("Would you like to use numbers? OK for yes and CANCEL for no.")
+    var numConfirm = window.confirm("Would you like to use numbers? OK for yes and CANCEL for no.");
 
-    if (numConfirm) {
-      localStorage.setItem("passNum", true);
-    } else {
-      localStorage.setItem("passNum", false);
-    }
+      if (numConfirm) {
+        localStorage.setItem("passNum", "yes");
+      } else {
+        localStorage.setItem("passNum", "no");
+      }
+
+    // Ask for special characters
+    var charConfirm = window.confirm("Would you like to use special characters? OK for yes and CANCEL for no.");
+
+      if (charConfirm) {
+        localStorage.setItem("specChar", "yes");
+      } else {
+        localStorage.setItem("specChar", "no");
+      }
+
+
+      debugger;
+    // Check for at least one choice
+    var lowCase = localStorage.getItem("lowCase");
+    var upCase = localStorage.getItem("upCase");
+    var passNum = localStorage.getItem("passNum");
+    var specChar = localStorage.getItem("specChar");
+
+      if ((lowCase === "no") && (upCase === "no") && (passNum === "no") && (specChar === "no")) {
+        window.alert("You need to choose at least one type of character for the password! Try again!");
+        return generatePassword();
+      } else {
+        window.alert("Good Job!")
+      }
 
   }
   var password = generatePassword();
